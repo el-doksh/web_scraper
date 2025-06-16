@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class BaseApiController extends Controller
 {
 
-    protected function successResponse($data = null, string $message = 'Successfully retrieved', int $statusCode = 200)
+    protected function successResponse(mixed $data = null, string $message = 'Successfully retrieved', int $statusCode = 200)
     {
         return response()->json([
                                 'success' => true,

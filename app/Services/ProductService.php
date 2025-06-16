@@ -13,7 +13,7 @@ class ProductService
      */
     public function getAll(array $filters = [], $limit = 20)
     {
-        return Product::search($filters)->paginate($limit);
+        return Product::search($filters)->latest()->paginate($limit);
     }
 
 

@@ -24,6 +24,7 @@ class ProductController extends BaseApiController
      */
     public function index()
     {
+        $this->fetch_products();
         $products = $this->productService->getAll();
         $productsResource = ProductResource::collection($products);
 
@@ -33,6 +34,11 @@ class ProductController extends BaseApiController
     public function fetch_products()
     {
         $url = 'https://www.jumia.com.eg/mlp-128gb-phones';
-        $this->scraperService->fetchProduct($url);
+        $isFetched = $this->scraperService->fetchProduct($url);
+
+        if($isFetched) {
+            return $this->successResponse();
+        } 
+        return $this->errorResponse();
     }
 }
